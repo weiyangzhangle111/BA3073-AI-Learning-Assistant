@@ -1,0 +1,236 @@
+BA3073 LOCAL DEPLOYMENT EVIDENCE
+Project: AI Learning Assistant
+Evidence status: Local deployment verified
+Scope: Task 1 local deployment only
+
+1. HOST ENVIRONMENT
+
+Operating system: macOS
+CPU architecture: ARM64 / Apple Silicon
+Docker Engine: 29.8.2
+Docker Compose: 5.5.1
+Docker Desktop: Running
+Docker allocated memory: approximately 3.825 GiB
+
+2. APPLICATION ARCHITECTURE
+
+Application: AI Learning Assistant
+Backend framework: FastAPI
+Application server: Uvicorn
+Python base image: python:3.12-slim-bookworm
+Database: SQLite
+External AI model provider: Qwen API
+Configured model: qwen3.6-flash
+HTML-to-PDF dependency: Playwright Chromium
+
+The Qwen model is accessed through an external API.
+The model weights are not hosted inside the Docker container.
+
+3. ACTUAL PROJECT FILES
+
+Docker build file: Dockerfile
+Compose configuration file: compose.yml
+Backend source directory: backend/
+Report generation source:
+backend/pipelines/essay_html.py
+
+4. VERIFIED DOCKER COMMANDS
+
+Build and start:
+
+docker compose -p ai-learning-assistant up --build -d
+
+Inspect container:
+
+docker compose -p ai-learning-assistant ps
+
+Check application health:
+
+curl -fsS http://127.0.0.1:14242/health
+
+Open browser:
+
+http://127.0.0.1:14242/ui/
+
+Run local verification:
+
+bash scripts/check-local-ui.sh --open
+
+5. VERIFIED RESULTS
+
+Docker image: Successfully built
+Container: Successfully started
+Container health status: healthy
+
+Health endpoint:
+http://127.0.0.1:14242/health
+
+Observed response:
+{"status":"ok"}
+
+Local interface:
+http://127.0.0.1:14242/ui/
+
+Browser: Safari
+Browser interface: Successfully rendered
+Local UI HTTP status: 200
+local-ui-check.txt result: PASS
+
+User registration and login: Successfully tested
+Qwen API connection test: Successful
+HTML report generation: Successful
+PDF conversion: Successful
+
+6. VERIFIED DOCKER CONFIGURATION
+
+Dockerfile base image:
+python:3.12-slim-bookworm
+
+Container working directory:
+/app
+
+Container application command:
+uvicorn backend.main:app --host 0.0.0.0 --port 14242
+
+Declared container port:
+14242
+
+Compose service:
+backend
+
+Compose image:
+ai-learning-assistant-backend:local
+
+Observed published port:
+0.0.0.0:14242 -> 14242/tcp
+
+SQLite path:
+/app/data/app.sqlite
+
+Workspace path:
+/app/workspace
+
+Default bind mounts:
+./data -> /app/data
+./workspace -> /app/workspace
+
+These bind mounts keep application data and generated files
+outside the container's writable layer.
+
+Compose health check:
+Endpoint: /health
+Interval: 10 seconds
+Timeout: 3 seconds
+Retries: 12
+Start period: 10 seconds
+
+7. PROMPT ENGINEERING MODIFICATIONS
+
+Modified source file:
+backend/pipelines/essay_html.py
+
+Modified function:
+build_essay_html_prompt()
+
+The system prompt was updated to improve:
+- Technical report structure
+- Evidence-based writing
+- Accurate cloud computing terminology
+- Technical explanation depth
+- Separation of verified and planned work
+
+The output instructions were updated to request:
+- A4 academic formatting
+- 25.4 mm page margins
+- 12 pt body text
+- 1.5 line spacing
+- Numbered headings
+- APA 7 references when applicable
+- CSS-based page numbering
+- Improved pagination
+
+The Python source passed syntax validation.
+The Docker image was rebuilt after the changes.
+HTML and PDF generation were successfully tested.
+
+8. NOT YET COMPLETED
+
+Alibaba Cloud ACR image upload: Not completed
+Alibaba Cloud ECS deployment: Not completed
+Cloud public IP verification: Not completed
+Domain configuration: Not completed
+Nginx reverse proxy: Not completed
+HTTPS certificate: Not completed
+Additional cloud access control: Not completed
+
+Do not describe any of these operations as completed.
+
+9. EVIDENCE LIMITATIONS
+
+No load-testing benchmark has been performed.
+No cross-architecture ECS deployment has been verified.
+No production availability or SLA has been measured.
+No cloud billing amount has been verified.
+
+Do not invent missing measurements or configurations.
+
+10. REPORT INSTRUCTIONS
+
+Use the information above as verified project evidence.
+
+Distinguish source-code configuration from observed runtime results.
+
+Use exact file names and actual commands.
+
+Do not invent additional implementation steps.
+
+Explain relevant cloud computing concepts in connection
+with this application's actual architecture.
+
+Avoid generic claims unsupported by the evidence.
+
+This file is a factual reference, not a finished report.
+
+11. VERIFIED NETWORK AND STORAGE CLARIFICATIONS
+
+The actual Compose filename is compose.yml.
+Do not call it docker-compose.yml.
+
+The exact Docker startup command is:
+docker compose -p ai-learning-assistant up --build -d
+
+The container's Uvicorn process binds to 0.0.0.0:14242.
+
+The observed Docker port publication is:
+0.0.0.0:14242 -> 14242/tcp
+
+The URL http://127.0.0.1:14242/ui/ was used for
+local browser testing. This does not mean the Docker
+published port is restricted to localhost.
+
+Do not claim that the service has been configured
+for localhost-only binding.
+
+The default Compose file includes bind mounts:
+./data:/app/data
+./workspace:/app/workspace
+
+These preserve data across container recreation
+provided the host directories remain intact.
+They are not a substitute for independent backups.
+
+The application was tested through registration,
+login, Qwen API connection, HTML generation,
+and PDF conversion.
+
+Do not describe these tests as pending.
+
+12. EVIDENCE INTERPRETATION RULES
+
+When citing configuration, identify its source file.
+When citing runtime results, identify the test method.
+Do not silently replace actual commands with generic
+Docker examples.
+Do not infer additional security settings or resource limits.
+Do not claim screenshots are embedded unless the
+images are actually available in the generated document.

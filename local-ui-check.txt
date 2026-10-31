@@ -1,0 +1,19 @@
+AI Learning Assistant Local Web Interface Check
+Time (local): 2026-11-01T04:04:40+0800
+Time (UTC): 2026-10-31T20:04:40Z
+Machine: renrandeMacBook-Air.local
+Operating system: Darwin 23.6.0
+CPU architecture: arm64
+Working directory: /Users/renran/Desktop/Mobile and Cloud Computing/individual assignment/AI_Learning_Assistant-main
+Report file: /Users/renran/Desktop/Mobile and Cloud Computing/individual assignment/AI_Learning_Assistant-main/local-ui-check.txt
+Tested URL: http://127.0.0.1:14242/ui/
+Execution location: terminal on the machine named above
+Target: this machine's loopback port 14242 (possibly forwarded by an SSH tunnel)
+Browser verification: HTTP checks do not prove that the page rendered in a browser
+
+HTTP status: 200
+curl exit code: 0
+Result: PASS — the web-interface URL returned HTTP 200.
+Browser launch location: default browser in this machine's desktop session
+Browser launch command: open http://127.0.0.1:14242/ui/
+Browser launch: request accepted; actual browser rendering remains unverified.

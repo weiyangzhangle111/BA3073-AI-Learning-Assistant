@@ -1,0 +1,38 @@
+BA3073 ECS Deployment Verification
+=================================
+UTC: 2026-10-31T22:42:24Z
+
+===== SYSTEM =====
+iZ7xv5lp990t8yuye6vg9jZ
+x86_64
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+
+===== DOCKER =====
+Docker version 29.8.0, build 88096ef
+Docker Compose version v5.6.1
+
+===== APPLICATION CONTAINER =====
+State=running OOMKilled=false RestartCount=0 Health=healthy
+
+===== CONTAINER PORTS =====
+NAMES                   STATUS                    PORTS
+ba3073-aila-backend-1   Up 30 minutes (healthy)   127.0.0.1:14242->14242/tcp
+
+===== APPLICATION HEALTH =====
+{"status":"ok"}
+
+===== NGINX HTTP PROXY =====
+Unauthenticated HTTP 401
+
+===== NGINX HTTPS PROXY =====
+Unauthenticated HTTPS 401
+
+===== EXISTING PROJECT =====
+NAMES          STATUS
+lab7-welcome   Up 8 days
+
+===== VERIFICATION SCOPE =====
+ECS application verified through localhost and SSH tunnel.
+Public-IP direct access was not tested.
+Domain DNS and publicly trusted HTTPS were not implemented.
+Self-signed HTTPS was tested locally.
