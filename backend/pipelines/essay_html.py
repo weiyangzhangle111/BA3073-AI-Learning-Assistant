@@ -174,7 +174,7 @@ def run_essay_html_pipeline(
     import re
     source, replacements = re.subn(
         r"</head\s*>",
-        lambda m: fixed_style + "\\n" + m.group(0),
+        lambda m: fixed_style + "\n" + m.group(0),
         source,
         count=1,
         flags=re.IGNORECASE,
@@ -378,8 +378,8 @@ def build_essay_html_prompt(
 
         "HEADINGS AND HIERARCHY: "
         "Use numbered main sections where appropriate. "
-        "Set h1 section headings to 14pt bold and h2 "
-        "subheadings to 12pt bold. "
+        "Set h1 section headings to 16pt bold and h2 "
+        "subheadings to 14pt bold. "
         "Use consistent heading spacing. "
         "Avoid excessive bold text and decorative colors. "
         "Do not insert unnecessary blank pages. "
